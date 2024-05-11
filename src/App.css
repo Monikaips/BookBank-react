@@ -10,8 +10,16 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   height: 100vh; /* Set height to 100% of viewport height */
   margin-top: 50px;
+=======
+  height: 1000px;
+  margin-top:50px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+>>>>>>> 5763a3b765578688fae6135ac508df60bf2da0ab
 }
 
 header {
