@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/BookBank-react/static/css/main.d21a53d1.css",
+    "main.js": "/BookBank-react/static/js/main.fe155807.js",
+    "static/js/453.4bb114b4.chunk.js": "/BookBank-react/static/js/453.4bb114b4.chunk.js",
+    "static/media/logo.jpg": "/BookBank-react/static/media/logo.1fbcbe77c6f422c0a4b3.jpg",
+    "static/media/background.jpg": "/BookBank-react/static/media/background.f9addbe2263ed7db2a8a.jpg",
+    "index.html": "/BookBank-react/index.html",
+    "main.d21a53d1.css.map": "/BookBank-react/static/css/main.d21a53d1.css.map",
+    "main.fe155807.js.map": "/BookBank-react/static/js/main.fe155807.js.map",
+    "453.4bb114b4.chunk.js.map": "/BookBank-react/static/js/453.4bb114b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d21a53d1.css",
+    "static/js/main.fe155807.js"
+  ]
+}
