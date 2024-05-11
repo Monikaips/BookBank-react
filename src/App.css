@@ -1,38 +1,358 @@
-.App {
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body {
+  background-image: url('./images/background.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 800px;
+  margin-top:50px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+}
+header {
+  background-color: #4d4747;
+  color: #ffffff;
+  padding: 20px 0;
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  
+  margin-right: 20px;
+  float: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.title {
+  flex: 1;
+  text-align: center;
+  display: inline-block;
+}
+
+.logo img {
+  height: 50%;
+  width: 25%;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+      margin-right: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App.css */
+.sub-nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Align items horizontally */
+}
+
+.sub-nav ul li {
+  margin-right: 20px;
+}
+
+.sub-nav ul li:last-child {
+  margin-right: 0;
+}
+
+.sub-nav ul li button {
+  --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+  --border-width: 0.125em;
+  --curve-size: 0.5em;
+  --blur: 30px;
+  --bg: #080312;
+  --color: #afffff;
+  color: var(--color);
+  cursor: pointer;
+  /* use position: relative; so that BG is only for .btn */
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  padding: 0.5em 1.5em;
+  font-size: 17px;
+  border: 0;
+  text-transform: uppercase;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(
+      /* Top-left */ 0% var(--curve-size),
+      var(--curve-size) 0,
+      /* top-right */ 100% 0,
+      100% calc(100% - var(--curve-size)),
+      /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
+      /* bottom-right 2 */ 0 100%
+  );
+  transition: color 250ms;
+}
+
+.sub-nav ul li button::after,
+.sub-nav ul li button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sub-nav ul li button::before {
+  background: var(--border-color);
+  background-size: 300% 300%;
+  animation: move-bg7234 5s ease infinite;
+  z-index: -2;
+}
+
+@keyframes move-bg7234 {
+  0% {
+      background-position: 31% 0%;
+  }
+
+  50% {
+      background-position: 70% 100%;
+  }
+
+  100% {
+      background-position: 31% 0%;
+  }
+}
+
+.sub-nav ul li button::after {
+  background: var(--bg);
+  z-index: -1;
+  clip-path: polygon(
+      /* Top-left */ var(--border-width)
+      calc(var(--curve-size) + var(--border-width) * 0.5),
+      calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+      /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+      /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+  );
+  transition: clip-path 500ms;
+}
+
+.sub-nav ul li button:where(:hover, :focus)::after {
+  clip-path: polygon(
+      /* Top-left */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - var(--border-width)) var(--border-width),
+      /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+      /* bottom-right 2 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width))
+  );
+  transition: 200ms;
+}
+
+.sub-nav ul li button:where(:hover, :focus) {
+  color: #fff;
+}
+
+
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f4f4f4;
+max-width: 100%;
+
+}
+
+h1 {
+justify-content: center;
+text-align: center;
+color: #fff;
+margin-bottom: 20px;
+}
+#form-ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#form {
+  width: 300px;
+  padding: 25px;
+  background-color: #161616;
+  box-shadow: 0px 15px 60px #00FF7F;
+  outline: 1px solid #2b9962;
+  border-radius: 10px;
+}
+
+#form-body {
+  width: 230px;
+  margin: auto;
+}
+
+#welcome-lines {
+  text-align: center;
+  line-height: 1;
+}
+
+#welcome-line-1 {
+  color: #00FF7F;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+#welcome-line-2 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#input-area {
+  margin-top: 20px;
+}
+
+.form-inp {
+  margin-bottom: 15px;
+}
+
+.form-inp input[type="text"],
+.form-inp input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #080808;
+  color: #00FF7F;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+#submit-button-cvr {
+  margin-top: 20px;
+}
+
+#submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00FF7F;
+  color: #161616;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-button:hover {
+  background-color: #161616;
+  color: #00FF7F;
+}
+
+/* App.css */
+@media (max-width: 600px) {
+.header {
+    flex-direction: column;
+    text-align: center;
+}
+
+.search-bar {
+    margin-top: 10px; /* Adds some space between the title and the search bar on small screens */
+}
+}
+
+.header {
+display: flex;
+align-items: center;
+justify-content: space-between; /* Distributes space evenly between items */
+padding: 10px 20px; /* Adds some padding around the header */
+
+}
+
+
+.welcome-message {
+  display: flex;          /* Use flexbox for layout */
+  justify-content: center;/* Center horizontally */
+  align-items: center;    /* Center vertically */
+  position: absolute;     /* Position absolutely */
+  top: 50%;               /* Place it at the vertical center */
+  left: 50%;              /* Place it at the horizontal center */
+  transform: translate(-50%, -50%); /* Center it perfectly */
+  background-color: #0e0d0d;  /* Grey background */
+  color: white;           /* White text color */
+  text-align: center;     /* Center the text within the element */
+  padding: 20px;          /* Add padding around the text */
+  border-radius: 25px;
+  animation: flash 1.5s infinite;  /* Apply flash animation */
+}
+
+@keyframes flash {
+    0% {
+        outline: 1px solid transparent;  /* Start with transparent outline */
+    }
+    50% {
+        outline: 1px solid #00FF7F;      /* Halfway through, show the outline */
+    }
+    100% {
+        outline: 1px solid transparent;  /* At the end, make the outline transparent again */
+    }
+}
+
+
+.logo {
+width: 150px;
+height: 100px;
+}
+
+.search-bar input {
+padding: 8px;
+width: 200px; /* Adjust width as needed */
+border: 1px solid #ccc;
+border-radius: 5px; /* Optional: rounds the corners of the search input */
+}
+
+.search-bar {
+display: flex;
+align-items: center;
+}
+
+/* App.css */
+.App {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 140vh; /* Ensures the content fills the viewport */
+  position: relative; /* Required for absolute positioning of footer */
+}
+
+main {
+  flex-grow: 1; /* Allow main content to grow */
+  margin-bottom: 60px; /* Add space for the footer */
+}
+
+footer.footer {
+  text-align: center;
+  margin-bottom: 0;
+  background-color: #574949;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px 0;
+  color:white;
+  width: 100%;
+  max-height: 18px;
+  position: absolute; /* Fixed position relative to the viewport */
+  bottom: 0; /* Fix at the bottom of the viewport */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Arial, sans-serif; /* Use a specific font */
+  font-size: 18px;
+  font-weight: bold; /* Apply bold font weight */
+  text-decoration: underline; /* Add underline decoration */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
