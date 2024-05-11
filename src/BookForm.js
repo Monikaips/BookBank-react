@@ -112,7 +112,9 @@ function BookForm() {
                     <div id="submit-button-cvr">
                         <button id="submit-button" type="submit">Upload</button>
                     </div>
-                    {uploadProgress > 0 && <p>Upload Progress: {uploadProgress.toFixed(2)}%</p>}
+                    {uploadProgress > 0 && (
+    <p style={{ color: 'white' }}>Upload Progress: {uploadProgress.toFixed(2)}%</p>
+)}
                 </div>
             </form>
         </div>

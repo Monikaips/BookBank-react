@@ -3,16 +3,17 @@ body {
   font-family: Arial, sans-serif;
 }
 body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-image: url('./images/background.jpg'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 800px;
-  margin-top:50px;
-  margin: 0;
-  padding: 0;
-  font-family: 'Times New Roman', Times, serif, sans-serif;
+  height: 100vh; /* Set height to 100% of viewport height */
+  margin-top: 50px;
 }
+
 header {
   background-color: #4d4747;
   color: #ffffff;
@@ -333,12 +334,10 @@ align-items: center;
 
 main {
   flex-grow: 1; /* Allow main content to grow */
-  margin-bottom: 60px; /* Add space for the footer */
+  margin-bottom: 0; /* Remove margin bottom */
 }
-
 footer.footer {
   text-align: center;
-  margin-bottom: 0;
   background-color: #574949;
   justify-content: center;
   padding: 20px 0;
@@ -355,4 +354,3 @@ footer.footer {
   text-decoration: underline; /* Add underline decoration */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
-
