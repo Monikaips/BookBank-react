@@ -1,5 +1,4 @@
-// App.js
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import BookForm from './BookForm';
 import RetrieveBooks from './RetrieveBooks';
@@ -20,6 +19,21 @@ function App() {
         }
     };
 
+    const mainContentRef = useRef(null);
+
+    const handleButtonClick = () => {
+        if (mainContentRef.current) {
+            const offsetTop = mainContentRef.current.offsetTop;
+            const windowHeight = window.innerHeight;
+            const scrollPosition = offsetTop - (windowHeight / 2);
+
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <div className="App">
             <header className="header">
@@ -32,16 +46,18 @@ function App() {
             <div className="sub-nav">
                 <ul>
                     <li><button onClick={() => setView('home')}>Home</button></li>
-                    <li><button onClick={() => setView('upload')}>Donate Books</button></li>
-                    <li><button onClick={() => setView('retrieve')}>Get Books</button></li>
+                    <li><button onClick={() => { setView('upload'); handleButtonClick(); }}>Donate Books</button></li>
+                    <li><button onClick={() => { setView('retrieve'); handleButtonClick(); }}>Get Books</button></li>
                 </ul>
             </div>
-            <main>
+            <main ref={mainContentRef}>
                 {view === 'upload' && <BookForm />}
                 {view === 'retrieve' && <RetrieveBooks />}
                 {view === 'home' && (
                     <div className="welcome-message">
-                        Welcome to the home page. Select an option above.
+                        <p>Welcome to the home page. Select an option above.</p>
+                        <p>Explore our vast collection of books and contribute to knowledge sharing!</p>
+                        <p>Don't just read, let's share knowledge!</p>
                     </div>
                 )}
                 {view === 'search' && <SearchResults searchInput={searchQuery} />}

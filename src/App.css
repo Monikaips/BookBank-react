@@ -10,16 +10,14 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-<<<<<<< HEAD
   height: 100vh; /* Set height to 100% of viewport height */
   margin-top: 50px;
-=======
-  height: 1000px;
+  height: 800px;
   margin-top:50px;
   margin: 0;
   padding: 0;
   font-family: 'Times New Roman', Times, serif, sans-serif;
->>>>>>> 5763a3b765578688fae6135ac508df60bf2da0ab
+
 }
 
 header {
@@ -230,7 +228,9 @@ margin-bottom: 20px;
 .form-inp {
   margin-bottom: 15px;
 }
-
+#form-body p {
+  color: white;
+}
 .form-inp input[type="text"],
 .form-inp input[type="file"] {
   width: 100%;
@@ -361,4 +361,47 @@ footer.footer {
   font-weight: bold; /* Apply bold font weight */
   text-decoration: underline; /* Add underline decoration */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+.welcome-message {
+  display: flex;          /* Use flexbox for layout */
+  justify-content: center;/* Center horizontally */
+  align-items: center;    /* Center vertically */
+  flex-direction: column; /* Stack quotes vertically */
+  position: absolute;     /* Position absolutely */
+  top: 60%;               /* Move it down slightly from the vertical center */
+  left: 50%;              /* Place it at the horizontal center */
+  transform: translate(-50%, -50%); /* Center it perfectly */
+  background-color: #0e0d0d;  /* Grey background */
+  color: white;           /* White text color */
+  text-align: center;     /* Center the text within the element */
+  padding: 20px;          /* Add padding around the text */
+  border-radius: 25px;
+  animation: flash 1.5s infinite;  /* Apply flash animation */
+}
+
+.welcome-message p {
+  margin: 10px 0;         /* Add some margin between quotes */
+}
+
+@keyframes flash {
+  0% {
+      outline: 1px solid transparent;  /* Start with transparent outline */
+  }
+  50% {
+      outline: 1px solid #00FF7F;      /* Halfway through, show the outline */
+  }
+  100% {
+      outline: 1px solid transparent;  /* At the end, make the outline transparent again */
+  }
+}
+.welcome-message p:first-child {
+  font-weight: bold;     /* Make the text bold */
+  font-size: 20px;       /* Increase font size */
+  color: #ff9900;        /* Change text color */
+}
+
+.welcome-message p {
+  margin: 10px 0;         /* Add some margin between quotes */
+  font-size: 16px;        /* Default font size for other paragraphs */
+  color: white;           /* Default text color for other paragraphs */
 }
