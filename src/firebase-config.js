@@ -3,17 +3,20 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";  // Corrected import statement
 import { getFirestore } from "firebase/firestore";
 
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyClpUQY4SFU3Rt8RZ9pzZ66zZNpRSH97E0",
-  authDomain: "bookbank-2k24.firebaseapp.com",
-  projectId: "bookbank-2k24",
-  storageBucket: "bookbank-2k24.appspot.com",
-  messagingSenderId: "234453823963",
-  appId: "1:234453823963:web:3d829a3facc6af439c37fe"
+  apiKey: "AIzaSyBKZYoT90xN9h1VtIfjj30TjiMgt6Jrp9I",
+  authDomain: "e-book2024.firebaseapp.com",
+  projectId: "e-book2024",
+  storageBucket: "e-book2024.appspot.com",
+  messagingSenderId: "214330583585",
+  appId: "1:214330583585:web:1f6210fc8549a08fa25160"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-export { db, storage };
+
+export { db, storage}; 
