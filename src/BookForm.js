@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { storage, db } from './firebase-config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
 function BookForm() {
+    const [registrationNumber, setRegistrationNumber] = useState('');
+    const [email, setEmail] = useState('');
     const [department, setDepartment] = useState('');
     const [semester, setSemester] = useState('');
     const [title, setTitle] = useState('');
@@ -20,7 +22,7 @@ function BookForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!department || !semester || !title || !author || !subject || !file) {
+        if (!registrationNumber || !email || !department || !semester || !title || !author || !subject || !file) {
             alert('Please fill in all fields and select a file.');
             return;
         }
@@ -40,14 +42,19 @@ function BookForm() {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
                     addDoc(collection(db, "books"), {
+                        registrationNumber,
+                        email,
                         department,
                         semester,
                         title,
                         author,
                         subject,
-                        pdfUrl: url
-                    }).then(() => {
+                        pdfUrl: url,
+                        downloads: [] // Initialize downloads array for this book
+                    }).then((docRef) => {
                         alert('Book data and file uploaded successfully!');
+                        setRegistrationNumber('');
+                        setEmail('');
                         setDepartment('');
                         setSemester('');
                         setTitle('');
@@ -55,12 +62,31 @@ function BookForm() {
                         setSubject('');
                         setFile(null);
                         setUploadProgress(0);  
+
+                        // Store initial download details for this book
+                        addDownloadDetails(docRef.id, {
+                            registrationNumber,
+                            email,
+                            timestamp: new Date()
+                        });
                     }).catch((error) => {
                         alert(`Failed to save book data: ${error.message}`);
                     });
                 });
             }
         );
+    };
+
+    const addDownloadDetails = async (bookId, downloadDetails) => {
+        try {
+            const bookDocRef = doc(db, "books", bookId);
+            await db.collection("downloads").add({
+                bookRef: bookDocRef,
+                ...downloadDetails
+            });
+        } catch (error) {
+            console.error("Error adding download details: ", error);
+        }
     };
 
     return (
@@ -72,6 +98,12 @@ function BookForm() {
                         <div id="welcome-line-2">Fill in the details</div>
                     </div>
                     <div id="input-area">
+                        <div className="form-inp">
+                            <input placeholder="Registration Number" type="text" value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} />
+                        </div>
+                        <div className="form-inp">
+                            <input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
                         <div className="form-inp">
                             <select id="department" required value={department} onChange={(e) => setDepartment(e.target.value)}>
                                 <option value="">Select Department</option>
@@ -113,8 +145,8 @@ function BookForm() {
                         <button id="submit-button" type="submit">Upload</button>
                     </div>
                     {uploadProgress > 0 && (
-    <p style={{ color: 'white' }}>Upload Progress: {uploadProgress.toFixed(2)}%</p>
-)}
+                        <p style={{ color: 'white' }}>Upload Progress: {uploadProgress.toFixed(2)}%</p>
+                    )}
                 </div>
             </form>
         </div>
