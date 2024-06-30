@@ -4,24 +4,20 @@ body {
 }
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background-image: url('./images/background.jpg'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Set height to 100% of viewport height */
-  margin-top: 50px;
+  max-height: 400vh; 
+  margin-top: 150px;
   height: 800px;
-  margin-top:50px;
-  margin: 0;
   padding: 0;
   font-family: 'Times New Roman', Times, serif, sans-serif;
 
 }
 
 header {
-  background-color: #4d4747;
+  background-color: #414753;
   color: #ffffff;
   padding: 20px 0;
   text-align: center;
@@ -188,6 +184,8 @@ margin-bottom: 20px;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-bottom: 30px;
+  margin-top: 0px;
 }
 
 #form {
@@ -344,14 +342,43 @@ main {
   flex-grow: 1; /* Allow main content to grow */
   margin-bottom: 0; /* Remove margin bottom */
 }
+
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+/* App.css */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer a {
+  color: #4dffbb;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 footer.footer {
   text-align: center;
-  background-color: #574949;
+  background-color: #414753;
   justify-content: center;
   padding: 20px 0;
   color:white;
   width: 100%;
-  max-height: 18px;
+  max-height: 20px;
   position: absolute; /* Fixed position relative to the viewport */
   bottom: 0; /* Fix at the bottom of the viewport */
   left: 50%;
@@ -404,4 +431,68 @@ footer.footer {
   margin: 10px 0;         /* Add some margin between quotes */
   font-size: 16px;        /* Default font size for other paragraphs */
   color: white;           /* Default text color for other paragraphs */
+}
+
+.department-filter {
+  margin-bottom: 20px;
+}
+
+.department-filter label {
+  margin-right: 10px;
+}
+
+.department-filter select {
+  padding: 5px;
+}
+
+
+.search-results-container {
+  padding: 20px;
+  margin-bottom: 50px;
+  background-color: #0b1725;
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* Text color */
+}
+
+.books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 8px;
+  color: #ffffff; /* Text color */
+  width: calc(33% - 20px);
+  box-shadow: 0 4px 8px rgba(240, 229, 229, 0.1);
+}
+
+.book-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.book-card p {
+  margin: 6px 0;
+}
+
+.book-card a {
+  display: block;
+  margin-top: 10px;
+  color: #007bff; /* Link color */
+  text-decoration: none;
+}
+
+.book-card a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .book-card {
+      width: calc(100% - 20px); /* Full width for smaller screens */
+  }
 }
