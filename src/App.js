@@ -62,9 +62,8 @@ function App() {
                 )}
                 {view === 'search' && <SearchResults searchInput={searchQuery} />}
             </main>
-            {/* Footer Section */}
             <footer className="footer">
-                <p>@Developed by Monika</p>
+            <p>@<a href="https://www.linkedin.com/in/monika-p-30b32a22a/" target="_blank" rel="noopener noreferrer">Developed by Monika</a></p>
             </footer>
         </div>
     );
