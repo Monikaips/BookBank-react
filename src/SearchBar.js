@@ -1,25 +1,24 @@
-// SearchBar.js
 import React, { useState } from 'react';
 
 function SearchBar({ onSearch }) {
-    const [input, setInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
-    const handleChange = (e) => {
-        const newValue = e.target.value;
-        setInput(newValue);
-        onSearch(newValue);  // Update the search query in real-time as user types
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSearch(searchInput);
     };
 
     return (
-        <div className="search-bar">
+        <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
             <input
                 type="text"
-                className="search-input"
-                value={input}
-                onChange={handleChange}
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Search books..."
+                style={{ padding: '8px', marginRight: '8px' }}
             />
-        </div>
+            <button type="submit" style={{ padding: '8px 16px', backgroundColor: 'blue', color: 'white', border: 'none' }}>Search</button>
+        </form>
     );
 }
 
